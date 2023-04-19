@@ -1,0 +1,5 @@
+/.idea/
+data.db*
+/filesMetadata.json
+/logs/*.log*
+.DS_Store
