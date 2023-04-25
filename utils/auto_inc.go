@@ -1,7 +1,5 @@
 package utils
 
-import "fmt"
-
 /**
 自增ID生成器
 */
@@ -12,17 +10,14 @@ type AutoInc struct {
 	ch   chan int
 }
 
-func NewAutoInc(step, max int) (*AutoInc, error) {
-	if step <= 0 || step >= max {
-		return nil, fmt.Errorf("step is zero or step greater than max")
-	}
+func NewAutoInc(step, max int) *AutoInc {
 	_seqId := &AutoInc{
 		step: step,
 		max:  max,
 		ch:   make(chan int, 64),
 	}
 	go _seqId.autoIncId()
-	return _seqId, nil
+	return _seqId
 }
 
 func (s *AutoInc) autoIncId() {
